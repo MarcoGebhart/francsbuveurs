@@ -1,6 +1,6 @@
 import { AppUser } from "../models/associations.js";
 import { appUserSchema, updateAppUserSchema } from "../schemas/index.js";
-import { idSchema } from "../schemas/index.js";
+import { idSchema, loginSchema } from "../schemas/index.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -11,7 +11,7 @@ export async function createAppUser(req, res) {
     const data = appUserSchema.parse(req.body);
 
     // Hash du mot de passe
-    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const hashedPassword = await bcrypt.hash(data.password, 12);
     data.password = hashedPassword;
 
     const newUser = await AppUser.create(data);
@@ -70,7 +70,7 @@ export async function updateAppUser(req, res) {
 
     // Si le mot de passe est modifié → hash
     if (data.password) {
-      data.password = await bcrypt.hash(data.password, 10);
+      data.password = await bcrypt.hash(data.password, 12);
     }
 
     await user.update(data);
@@ -108,7 +108,7 @@ export async function deleteAppUser(req, res) {
 // 🔑 LOGIN appUser
 export async function loginAppUser(req, res) {
   try {
-    const { email, password } = req.body;
+    const { email, password } = loginSchema.parse(req.body);
 
     const user = await AppUser.findOne({ where: { email } });
     if (!user) {
@@ -124,7 +124,7 @@ export async function loginAppUser(req, res) {
       }
       
     const token = jwt.sign(
-      { id: user.id, email: user.email, role: user.role },
+      { id: user.id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
     );
@@ -139,6 +139,12 @@ export async function loginAppUser(req, res) {
     res.json({ message: "Connexion réussi", user: userWithoutPassword });
   } catch (error) {
     console.error("Erreur login appUser:", error);
+    if (error.name === "ZodError") {
+      return res.status(400).json({
+        message: "Données invalides",
+        details: error.errors
+      });
+    }
     res.status(500).json({ message: "Erreur serveur" });
   }
 }

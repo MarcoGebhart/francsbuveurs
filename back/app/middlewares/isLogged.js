@@ -1,28 +1,35 @@
 // middleware/isLogged.js
 import jwt from "jsonwebtoken";
+import {AppUser} from "../models/associations.js"
 
-export function isLogged(req, res, next) {
+// Middleware général
+export async function isLogged(req, res, next) {
   const token = req.cookies?.token;
-
-  if (!token) {
-    return res.status(401).json({ message: "Accès refusé : token manquant" });
-  }
+  if (!token) return res.status(401).json({ message: "Non connecté" });
 
   try {
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Si on veut restreindre aux admins uniquement
-    if (decoded.role && decoded.role !== "admin") {
-      return res.status(403).json({ message: "Accès refusé : droits insuffisants" });
+    const user = await AppUser.findByPk(decoded.id, {
+      attributes: { exclude: ["password"] }
+    });
+    if (!user) {
+      return res.status(401).json({ message: "Utilisateur non trouvé" });
     }
 
-    req.user = decoded;
+    req.user = user;
     next();
-  } catch (error) {
-    console.error("Erreur vérification token :", error.message);
-    if (error.name === "TokenExpiredError") {
-      return res.status(401).json({ message: "Session expirée, veuillez vous reconnecter" });
-    }
-    return res.status(403).json({ message: "Token invalide" });
+  } catch (error){
+    console.error("Erreur vérification token :", error);
+    return res.status(401).json({ message: "Token invalide ou expiré" });
   }
+}
+
+// Middleware admin uniquement
+export function isAdmin(req, res, next) {
+  if (req.user?.role !== "admin") {
+    return res.status(403).json({ message: "Réservé aux admins" });
+  }
+  next();
 }
