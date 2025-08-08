@@ -1,0 +1,54 @@
+
+### 
+# login admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+   "email": "test@user.io",
+   "password": "User-test2" 
+}
+
+###
+# get all users
+GET http://localhost:5000/users
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ0ZXN0QHVzZXIuaW8iLCJyb2xlIjoidXNlciIsImlhdCI6MTc1NDY1ODM2MCwiZXhwIjoxNzU0NjY1NTYwfQ._chjhz-1kiN2iRGa1HnjnGSDFqKplljpRTEHBXnCJP4 
+Content-Type: application/json
+
+###
+# get one user
+GET http://localhost:5000/users/1
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJjb0BhZG1pbi5pbyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDY1Njg4MiwiZXhwIjoxNzU0NjY0MDgyfQ.HwRdWOHOi12QCcsHX4PidDIlUyez2OEOBmDuTXYL2Yw 
+Content-Type: application/json
+
+###
+# create one user
+POST http://localhost:5000/users
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJjb0BhZG1pbi5pbyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDY1Njg4MiwiZXhwIjoxNzU0NjY0MDgyfQ.HwRdWOHOi12QCcsHX4PidDIlUyez2OEOBmDuTXYL2Yw 
+Content-Type: application/json
+
+{
+    "id_client_shopify": "fake-shopify-id-003",
+    "email": "test2@user.io",
+    "password": "Testuser2!",
+    "role": "user"
+}
+
+###
+# upade one user
+PATCH  http://localhost:5000/users/4
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJjb0BhZG1pbi5pbyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDY1Njg4MiwiZXhwIjoxNzU0NjY0MDgyfQ.HwRdWOHOi12QCcsHX4PidDIlUyez2OEOBmDuTXYL2Yw 
+Content-Type: application/json
+
+{
+    "role": "admin"
+}
+
+###
+# delete one user
+DELETE http://localhost:5000/users/4
+
+###
+# logout
+POST http://localhost:5000/logout
+Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJjb0BhZG1pbi5pbyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDY1Njg4MiwiZXhwIjoxNzU0NjY0MDgyfQ.HwRdWOHOi12QCcsHX4PidDIlUyez2OEOBmDuTXYL2Yw 
