@@ -1,0 +1,50 @@
+
+###
+# GET all evenments
+GET http://localhost:5000/events
+Content-Type: application/json
+###
+
+###
+# GET one evenment by ID
+GET http://localhost:5000/events/2
+Content-Type: application/json
+###
+
+###
+# GET one evenment by slug
+GET http://localhost:5000/events/slug/fete-de-la-biere
+Content-Type: application/json
+###
+
+### 
+# CREATE evenment
+POST http://localhost:5000/events
+content-type: application/json
+
+{
+    "title": "Barbecue géant",
+    "description": "grillade à gogo et bière qui coule a flot",
+    "date": "2025-08-09",
+    "hour": "19:00",
+    "img": "barbecue",
+    "slug": "barbecue-geant",
+    "id_app_user": 1 
+}
+###
+
+### 
+# UPDATE Evenment
+PATCH http://localhost:5000/events/3
+content-type: application/json
+
+{
+    "title": "Barbecue Party",
+    "slug": "barbecue-party"
+}
+###
+
+###
+# DELETE Amusement
+DELETE http://localhost:5000/events/3
+###
