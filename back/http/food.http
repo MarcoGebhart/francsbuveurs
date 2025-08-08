@@ -1,0 +1,41 @@
+
+###
+# GET all foods
+GET http://localhost:5000/foods
+Content-Type: application/json
+###
+
+###
+# GET one food by ID
+GET http://localhost:5000/foods/1
+Content-Type: application/json
+###
+
+# CREATE food
+POST http://localhost:5000/foods
+content-type: application/json
+
+{
+    "name": "Summer twist",
+    "description": "bière a base d'hibiscus",
+    "price": 6,
+    "img": "barbecue",
+    "id_app_user": 1 
+}
+###
+
+# UPDATE food
+PATCH http://localhost:5000/foods/5
+content-type: application/json
+
+{
+    "name": "Assiette de tapas",
+    "price": 10,
+    "description": "assortiment de spécialités Espanole"
+}
+###
+
+###
+# DELETE food
+DELETE http://localhost:5000/foods/5
+###

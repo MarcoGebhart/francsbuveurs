@@ -1,24 +1,24 @@
 
 ###
-# GET all evenments
+# GET all events
 GET http://localhost:5000/events
 Content-Type: application/json
 ###
 
 ###
-# GET one evenment by ID
+# GET one event by ID
 GET http://localhost:5000/events/2
 Content-Type: application/json
 ###
 
 ###
-# GET one evenment by slug
+# GET one event by slug
 GET http://localhost:5000/events/slug/fete-de-la-biere
 Content-Type: application/json
 ###
 
 ### 
-# CREATE evenment
+# CREATE event
 POST http://localhost:5000/events
 content-type: application/json
 
@@ -34,7 +34,7 @@ content-type: application/json
 ###
 
 ### 
-# UPDATE Evenment
+# UPDATE Event
 PATCH http://localhost:5000/events/3
 content-type: application/json
 
@@ -45,6 +45,6 @@ content-type: application/json
 ###
 
 ###
-# DELETE Amusement
+# DELETE event
 DELETE http://localhost:5000/events/3
 ###

@@ -1,5 +1,6 @@
 import { Event } from "../models/associations.js";
 import { slugSchema, idSchema, updateEventSchema} from "../schemas/index.js";
+
 export const getAllEvents = async (req, res) => {
     try {
         const events = await Event.findAll({
@@ -8,7 +9,7 @@ export const getAllEvents = async (req, res) => {
         res.json(events)
     } catch (error) {
         console.log("Error fetching events data:", error);
-    res.status(500).json({error: "Failed to fetch events data"});
+        res.status(500).json({error: "Failed to fetch events data"});
     }
 }
 
@@ -23,10 +24,10 @@ export const getOneEvent = async (req, res) => {
         res.json(event)
     } catch (error) {
         console.error("Error fetching event data:", error);
-    if (error.name === 'ZodError' || error.name === 'ValidationError') {
-      return res.status(400).json({ error: "ID de requête invalide", details: error.errors });
-    }
-    res.status(500).json({error: "Failed to fetch event data"});
+        if (error.name === 'ZodError' || error.name === 'ValidationError') {
+            return res.status(400).json({ error: "ID de requête invalide", details: error.errors });
+        }
+        res.status(500).json({error: "Failed to fetch event data"});
     }
 }
 
