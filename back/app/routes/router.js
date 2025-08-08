@@ -1,12 +1,16 @@
 import {Router} from "express";
-import { router as eventRouter } from "./event.js"
-import { router as foodRouter } from "./food.js"
+import { router as eventRouter } from "./event.js";
+import { router as foodRouter } from "./food.js";
+import { router as drinkRouter } from "./drink.js"
 
 export const router = Router();
 
-// router events
+// router des évènement
 router.use(eventRouter);
 
-// router foods
-router.use(foodRouter)
+// router des foods
+router.use(foodRouter);
+
+// router des boissons;
+router.use(drinkRouter);
 

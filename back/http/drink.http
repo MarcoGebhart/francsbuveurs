@@ -1,0 +1,40 @@
+
+###
+# GET all drinks
+GET http://localhost:5000/drinks
+Content-Type: application/json
+###
+
+###
+# GET one drinks by ID
+GET http://localhost:5000/drinks/5
+Content-Type: application/json
+###
+
+# CREATE drinks
+POST http://localhost:5000/drinks
+content-type: application/json
+
+{
+    "name": "Summer twist",
+    "price": 6,
+    "img": "summertwist",
+    "id_app_user": 1 
+}
+###
+
+# UPDATE drinks
+PATCH http://localhost:5000/drinks/7
+content-type: application/json
+
+{
+    "name": "Bagerna",
+    "price": 5,
+    "img": "bagerna"
+}
+###
+
+###
+# DELETE drinks
+DELETE http://localhost:5000/drinks/7
+###
