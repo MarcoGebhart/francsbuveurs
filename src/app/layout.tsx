@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${Fredericka.className} antialiased`}
+        className={`${Fredericka.variable} antialiased`}
       >
         <NavBar />
         {children}

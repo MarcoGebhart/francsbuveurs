@@ -1,32 +1,33 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
 @plugin "daisyui/theme" {
   name: "light";
   default: false;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(98% 0 0);
-  --color-base-300: oklch(95% 0 0);
-  --color-base-content: oklch(21% 0.006 285.885);
+  --color-base-100: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(96% 0.007 247.896);
+  --color-base-300: oklch(92% 0.013 255.508);
+  --color-base-content: oklch(20% 0.042 265.755);
   --color-primary: oklch(76% 0.188 70.08);
-  --color-primary-content: oklch(100% 0 0);
+  --color-primary-content: oklch(98% 0.022 95.277);
   --color-secondary: oklch(0% 0 0);
   --color-secondary-content: oklch(100% 0 0);
-  --color-accent: oklch(76% 0.188 70.08);
-  --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(14% 0.005 285.823);
-  --color-neutral-content: oklch(92% 0.004 286.32);
-  --color-info: oklch(66% 0.179 58.318);
-  --color-info-content: oklch(0% 0 0);
-  --color-success: oklch(62% 0.194 149.214);
-  --color-success-content: oklch(37% 0.077 168.94);
-  --color-warning: oklch(82% 0.189 84.429);
-  --color-warning-content: oklch(41% 0.112 45.904);
-  --color-error: oklch(50% 0.213 27.518);
-  --color-error-content: oklch(100% 0 0);
-  --radius-selector: 0.5rem;
-  --radius-field: 0.25rem;
+  --color-accent: oklch(55% 0.027 264.364);
+  --color-accent-content: oklch(98% 0.002 247.839);
+  --color-neutral: oklch(20% 0.042 265.755);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(71% 0.143 215.221);
+  --color-info-content: oklch(98% 0.019 200.873);
+  --color-success: oklch(70% 0.14 182.503);
+  --color-success-content: oklch(98% 0.014 180.72);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(98% 0.022 95.277);
+  --color-error: oklch(64% 0.246 16.439);
+  --color-error-content: oklch(96% 0.015 12.422);
+  --radius-selector: 2rem;
+  --radius-field: 1rem;
   --radius-box: 0.5rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
@@ -34,8 +35,9 @@
   --depth: 1;
   --noise: 0;
 }
+
 body {
-  font-family: "Fredericka the Great", serif;
+  font-family: var(--font-fredericka), serif;
 }
 
 
