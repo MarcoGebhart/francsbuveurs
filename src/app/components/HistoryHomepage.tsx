@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Cuve from "../../../public/cuve2.png"
+import Link from "next/link";
 
 
 export default function History() {
@@ -12,7 +13,9 @@ export default function History() {
             <p className="text-xl mt-6">Une devise : &apos; Du champ à la chope &apos;.</p>
             <p className="mt-6"> Pour l&apos;instant, nous avons une gamme de six bières différentes. Nous explorons de nombreuses pistes : des vieilles recettes oubliées, des bières agricoles historiquement brassées pour les saisonniers mais aussi des créations intégrant des fleurs, des fruits ou encore du houblon américain, pour des IPA aux belles amertumes et aux notes fruitées.
             </p>
-            <button className="border border-orange-500 text-black bg-white rounded p-2 mt-6 hover:bg-orange-500 hover:text-white md:w-1/3">LA BRASSERIE</button>
+            <Link href={"/brasserie"}>
+                <button className="border border-orange-500 text-black bg-white rounded p-2 mt-6 hover:bg-orange-500 hover:text-white ">LA BRASSERIE</button>
+            </Link>
         </div>
         
     )
