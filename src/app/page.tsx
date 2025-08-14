@@ -22,8 +22,7 @@ export default function Home() {
         <h1 className="text-3xl">BIENVENUE CHEZ LES FRANCS BUVEURS</h1>
         <History />  
       </div>
-      <NavigateCard />
-      
+      <NavigateCard />  
     </div>
   )
 }
