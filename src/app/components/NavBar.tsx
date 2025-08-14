@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Logo from "../../../public/logo.png"
+import Link from "next/link";
 
 
  export const NavBar = () => {
@@ -11,19 +12,21 @@ import Logo from "../../../public/logo.png"
         setIsOpen(!isOpen);
       };
     return (
-        <nav className="bg-white text-black shadow-md">
+        <nav className="bg-white text-black shadow-md p-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Conteneur principal */}
         <div className="flex justify-between items-center h-20 md:hidden">
-            <div className="absolute left-1/2 transform -translate-x-1/2">
+            <div className="absolute left-1/2 transform -translate-x-1/2 ">
                 {/* Logo */}
-                <Image
-                    
-                    src={Logo}
-                    alt="FrancsBuveurs"
-                    width={150}
-                    height={150}
-                />
+                <Link href={"/"} onClick={() => setIsOpen(false)}>
+                  <Image
+                      
+                      src={Logo}
+                      alt="FrancsBuveurs"
+                      width={200}
+                      height={150}
+                  />
+                </Link>
             </div>
             {/* Burger */}
             <div className="ml-auto">
@@ -43,33 +46,42 @@ import Logo from "../../../public/logo.png"
         <div className="hidden md:flex items-center h-20 justify-center gap-15">
           {/* Liens gauche */}
           <div className="md:flex md:flex-col gap-4 lg:flex-row lg:gap-15">
-            <a href="#" className="hover:text-orange-500 ">LA BOUTIQUE</a>
-            <a href="#" className="hover:text-orange-500">LE BAR</a>
+            <Link href={"/boutique"} className="hover:text-orange-500 ">
+              LA BOUTIQUE
+            </Link>
+            <Link href={"/bar"} className="hover:text-orange-500">
+            LE BAR
+            </Link>
           </div>
 
           {/* Logo au centre */}
-          <Image
-            src={Logo}
-            alt="FrancsBuveurs"
-            width={150}
-            height={150}
-          />
-
+          <Link href={"/"} className="shadow ">
+            <Image
+              src={Logo}
+              alt="FrancsBuveurs"
+              width={200}
+              height={150}
+            />
+            </Link>
           {/* Liens droite */}
           <div className="flex flex-col gap-4 lg:flex-row lg:gap-15">
-            <a href="#" className="hover:text-orange-500">LES EVENEMENTS</a>
-            <a href="#" className="hover:text-orange-500">LA BRASSERIE</a>
+            <Link href={"/evenements"} className="hover:text-orange-500">
+              LES EVENEMENTS 
+            </Link>
+            <Link href={"/brasserie"} className="hover:text-orange-500">
+              LA BRASSERIE 
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Menu mobile */}
       {isOpen && (
-        <div className="md:hidden bg-white px-4 pb-4 space-y-4 text-center">
-          <a href="#" className="block hover:text-orange-500">LA BOUTIQUE</a>
-          <a href="#" className="block hover:text-orange-500">LE BAR</a>
-          <a href="#" className="block hover:text-orange-500">LES EVENEMENTS</a>
-          <a href="#" className="block hover:text-orange-500">LA BRASSERIE</a>
+        <div className="md:hidden bg-white px-4 pt-4 pb-4 space-y-4 text-center">
+          <Link href={"/boutique"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LA BOUTIQUE</Link>
+          <Link href={"/bar"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LE BAR</Link>
+          <Link href={"/evenements"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LES EVENEMENTS</Link>
+          <Link href={"/brasserie"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LA BRASSERIE</Link>
         </div>
       )}
     </nav>
