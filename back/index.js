@@ -8,7 +8,7 @@ import { router } from "./app/routes/router.js";
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors({
-	origin:["http://localhost:3000", "http://192.168.1.186:3000"], // ou ton domaine en prod
+	origin:["http://localhost:3000", "http://192.168.1.186"], // ou ton domaine en prod
 	credentials: true // autorise l'envoi de cookies
   }));
 

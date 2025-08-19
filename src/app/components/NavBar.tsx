@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Logo from "../../../public/logo.png"
 import Link from "next/link";
+import { CartIcon } from "./CartIcon";
 
 
  export const NavBar = () => {
@@ -72,9 +73,14 @@ import Link from "next/link";
               LA BRASSERIE 
             </Link>
           </div>
+          
+          
         </div>
+        <div className="">
+          <CartIcon /> 
+        </div> 
       </div>
-
+      
       {/* Menu mobile */}
       {isOpen && (
         <div className="md:hidden bg-white px-4 pt-4 pb-4 space-y-4 text-center">

@@ -68,7 +68,8 @@ export interface ShopifyImageNode {
   }
   
   export interface ProductVariant {
-    price: ProductPrice;
+    id: string;
+    price: ProductPrice; 
   }
 
   export interface ProductMetafields {
