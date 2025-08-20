@@ -30,7 +30,7 @@ export default async function ShopPage() {
     
   // 4. On affiche les produits
   return (
-    <div className="flex flex-wrap justify-center gap-6 p-8">
+    <div className="flex flex-wrap justify-center gap-6 p-8 text-black">
       {products.map((product) => (
         <ProductCard key={product.id} product={product}/>
       ))}

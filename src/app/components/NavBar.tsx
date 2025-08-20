@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Logo from "../../../public/logo.png"
 import Link from "next/link";
-import { CartIcon } from "./CartIcon";
 
 
  export const NavBar = () => {
@@ -75,9 +74,6 @@ import { CartIcon } from "./CartIcon";
           </div>
           
           
-        </div>
-        <div className="">
-          <CartIcon /> 
         </div> 
       </div>
       

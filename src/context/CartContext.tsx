@@ -2,16 +2,22 @@
 
 import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { shopifyFetch } from '@/lib/shopify';
-import { CREATE_CART, ADD_TO_CART, GET_CART, UPDATE_CART  } from '@/lib/queries';
+import { CREATE_CART, ADD_TO_CART, GET_CART, UPDATE_CART, REMOVE_CART_LINE  } from '@/lib/queries';
 import { CartItem, CartEdge } from '@/@types/CartItem';
 
 interface CartContextType {
     cartId: string | null;
     cartItems: CartItem[];
     addToCart: (variantId: string, quantity: number) => Promise<void>;
+    updateCartItem: (lineId:string, quantity: number) => Promise<void>;
+    removeCartItem: (lineId: string) => Promise<void>;
     checkoutUrl: string | null;
     isCartReady: boolean;
     totalItems: number;
+    totalPrice: {
+      amount: string;
+      currencyCode: string;
+    } | null;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -21,12 +27,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
     const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
     const [isCartReady, setIsCartReady] = useState(false);
+    const [totalPrice, setTotalPrice] = useState<{ amount: string; currencyCode: string } | null>(null);
+
 
     const totalItems = useMemo(()=>{
        return  cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    },[cartItems])
+    },[cartItems]) 
     
-
     // 1. Crée un nouveau panier (cart) si aucun n'existe
     useEffect(() => {
         const initCart = async () => {
@@ -50,6 +57,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 setCartId(cartIdWithKey);
                 setCheckoutUrl(cart.checkoutUrl);
                 setCartItems(cart.lines.edges.map((edge: CartEdge) => edge.node));
+                setTotalPrice(cart.cost?.totalAmount ?? null);
                 setIsCartReady(true);
           
                 // 🔐 On resauvegarde toujours l'ID complet avec la clé
@@ -77,6 +85,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
               setCartId(cartIdWithKey);
               setCheckoutUrl(newCart.checkoutUrl);
               setCartItems(newCart.lines?.edges?.map((edge: CartEdge) => edge.node) ?? []);
+              setTotalPrice(newCart.cost?.totalAmount ?? null);
           
               // 🔐 Sauvegarde l'ID complet avec la clé
               localStorage.setItem('shopify_cart_id', cartIdWithKey);
@@ -154,6 +163,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           const updatedItems = cart.lines.edges.map((edge: CartEdge) => edge.node);
           setCartItems(updatedItems);
           setCheckoutUrl(cart.checkoutUrl);
+          setTotalPrice(cart.cost?.totalAmount ?? null);
       
           console.log("Panier mis à jour :", updatedItems);
         } catch (error) {
@@ -161,8 +171,39 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
       };
 
+      // Modifier la quantité d'un produit
+      const updateCartItem = async (lineID: string, quantity: number) => {
+        if(!cartId) return;
+        const result = await shopifyFetch({
+          query: UPDATE_CART,
+          variables: {cartId, lines: [{ id: lineID, quantity}]},
+        });
+
+        const cart = result.data?.cartLinesUpdate?.cart;
+        if (cart) {
+          setCartItems(cart.lines.edges.map((edge: CartEdge) => edge.node));
+          setTotalPrice(cart.cost?.totalAmount ?? null);
+        }
+      };
+
+      // Supprimer un produit du panier
+      const removeCartItem = async (lineId: string) => {
+        if (!cartId) return;
+        const result = await shopifyFetch({
+          query: REMOVE_CART_LINE, // mutation cartLinesRemove
+          variables: { cartId, lineIds: [lineId] },
+        });
+
+        const cart = result.data?.cartLinesRemove?.cart;
+        if (cart) {
+          setCartItems(cart.lines.edges.map((edge: CartEdge) => edge.node));
+          setTotalPrice(cart.cost?.totalAmount ?? null);
+        }
+      };
+
+
     return (
-        <CartContext.Provider value={{ cartId, cartItems, addToCart, checkoutUrl, isCartReady, totalItems }}>
+        <CartContext.Provider value={{ cartId, cartItems, addToCart, checkoutUrl, isCartReady, totalItems, totalPrice, updateCartItem, removeCartItem }}>
             {children}
         </CartContext.Provider>
     );

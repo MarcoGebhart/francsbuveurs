@@ -3,6 +3,7 @@ import { Fredericka_the_Great } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "./components/NavBar";
 import { CartProvider } from "@/context/CartContext";
+import { CartIcon } from "./components/CartIcon";
 
 const Fredericka = Fredericka_the_Great({
   variable: "--font-fredericka",
@@ -25,10 +26,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${Fredericka.variable} antialiased`}
+        className={`${Fredericka.variable} antialiased` }
       >
         <CartProvider>
         <NavBar />
+        <CartIcon />
         {children}
         </CartProvider>
       </body>

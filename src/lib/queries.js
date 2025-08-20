@@ -82,17 +82,16 @@ export const CREATE_CART = `
       cart {
         id
         checkoutUrl
-      }
-    }
-  }
-`;
-
-export const ADD_TO_CART = `
-  mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {
-    cartLinesAdd(cartId: $cartId, lines: $lines) {
-      cart {
-        id
-        checkoutUrl
+        cost {
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalAmount {
+            amount
+            currencyCode
+          }
+        }
         lines(first: 100) {
           edges {
             node {
@@ -104,6 +103,57 @@ export const ADD_TO_CART = `
                   title
                   image {
                     url
+                  }
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  product {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+`;
+
+export const ADD_TO_CART = `
+  mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {
+    cartLinesAdd(cartId: $cartId, lines: $lines) {
+      cart {
+        id
+        checkoutUrl
+        cost {
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalAmount {
+            amount
+            currencyCode
+          }
+        }
+        lines(first: 100) {
+          edges {
+            node {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                  image {
+                    url
+                  }
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  product {
+                    title
                   }
                 }
               }
@@ -120,6 +170,16 @@ export const GET_CART = `
     cart(id: $id) {
       id
       checkoutUrl
+      cost {
+        subtotalAmount {
+          amount
+          currencyCode
+        }
+        totalAmount {
+          amount
+          currencyCode
+        }
+      }
       lines(first: 100) {
         edges {
           node {
@@ -132,6 +192,13 @@ export const GET_CART = `
                 image {
                   url
                 }
+                priceV2 {
+                  amount
+                  currencyCode
+                }
+                product {
+                  title
+                }
               }
             }
           }
@@ -142,11 +209,15 @@ export const GET_CART = `
 `;
 
 export const UPDATE_CART = `
-  mutation updateCart($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+  mutation updateCartLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
       cart {
         id
         checkoutUrl
+        cost {
+          subtotalAmount { amount currencyCode }
+          totalAmount { amount currencyCode }
+        }
         lines(first: 100) {
           edges {
             node {
@@ -156,9 +227,45 @@ export const UPDATE_CART = `
                 ... on ProductVariant {
                   id
                   title
-                  image {
-                    url
-                  }
+                  image { url }
+                  priceV2 { amount currencyCode }
+                  product { title }
+                }
+              }
+            }
+          }
+        }
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+export const REMOVE_CART_LINE = `
+  mutation removeCartLine($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        id
+        checkoutUrl
+        cost {
+          subtotalAmount { amount currencyCode }
+          totalAmount { amount currencyCode }
+        }
+        lines(first: 100) {
+          edges {
+            node {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                  image { url }
+                  priceV2 { amount currencyCode }
+                  product { title }
                 }
               }
             }

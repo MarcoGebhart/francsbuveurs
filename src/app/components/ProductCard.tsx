@@ -49,20 +49,20 @@ export default function ProductCard({ product }: IProduct) {
             {/* Le compteur */}
             <div className="flex items-center justify-between mt-4  border rounded-4xl ">
               <span className="text-xl p-4">{quantity}</span>
-                  <div className="flex gap-2 m-2">
-                      <button
-                          onClick={() => setQuantity(prev => prev + 1)}
-                          className="px-3 py-1 text-xl text-bold border rounded-full"
-                          >
-                          +
-                      </button>
-                      <button
-                          onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                          className="px-3 py-1 border rounded-full text-xl text-bold "
-                          >
-                          -
-                      </button>
-                  </div>
+              <div className="flex gap-2 m-2">
+                  <button
+                      onClick={() => setQuantity(prev => prev + 1)}
+                       className="px-3 py-1 text-xl text-bold border rounded-full"
+                      >
+                      +
+                  </button>
+                  <button
+                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                       className="px-3 py-1 border rounded-full text-xl text-bold "
+                      >
+                      -
+                  </button>
+              </div>
             </div>
             {/* Le bouton Panier */}
             <button
@@ -76,17 +76,19 @@ export default function ProductCard({ product }: IProduct) {
                     height={24}
                     className=""
                 />
-            </button>
-            {/* Bouton de paiement, visible uniquement si le panier a des articles */}
-            {checkoutUrl && cartItems.length > 0 && (
-                            <a
-                                href={checkoutUrl}
-                                className="px-6 py-3 mt-4 border rounded-full  hover:bg-orange-400 transition-colors"
-                            >
-                                Paiement
-                            </a>
-                        )}
+            </button>    
         </div> 
+        <div className="m-8">
+          {/* Bouton de paiement, visible uniquement si le panier a des articles */}
+            {checkoutUrl && cartItems.length > 0 && (
+                  <a
+                      href={checkoutUrl}
+                        className=" border rounded-full p-4 hover:bg-orange-400 transition-colors"
+                      >
+                      PAIEMENT
+                  </a>
+            )}
+        </div>
     </div>
   );
 }
