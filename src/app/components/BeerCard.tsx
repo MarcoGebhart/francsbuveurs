@@ -44,7 +44,7 @@ export function BeerCard({ product }: BeerCardProps) {
     }
 
     return (
-        <div className="container mx-auto p-8 md:w-screen">
+        <div className="container mx-auto p-8 md:h-screen">
             <div className="flex flex-col md:flex-row gap-8 text-black">
                 <div className="w-full md:w-1/2">
                     <Image

@@ -1,4 +1,4 @@
-// components/ProductCard.jsx
+
 'use client';
 
 import { Product } from "@/@types/Product";

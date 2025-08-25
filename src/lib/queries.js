@@ -117,7 +117,12 @@ export const CREATE_CART = `
           }
         }
       }
+      userErrors {
+        field
+        message
+      }
     }
+  }
 `;
 
 export const ADD_TO_CART = `

@@ -12,7 +12,7 @@ import Link from "next/link";
         setIsOpen(!isOpen);
       };
     return (
-        <nav className="bg-white text-black shadow-md p-4">
+        <nav className="bg-white text-black md:pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Conteneur principal */}
         <div className="flex justify-between items-center h-20 md:hidden">
@@ -23,7 +23,7 @@ import Link from "next/link";
                       
                       src={Logo}
                       alt="FrancsBuveurs"
-                      width={200}
+                      width={180}
                       height={150}
                   />
                 </Link>
@@ -41,9 +41,10 @@ import Link from "next/link";
                 </svg>
                 </button>
             </div>
-         </div> 
+        </div>
         {/* Desktop & tablette */}
         <div className="hidden md:flex items-center h-20 justify-center gap-15">
+          
           {/* Liens gauche */}
           <div className="md:flex md:flex-col gap-4 lg:flex-row lg:gap-15">
             <Link href={"/boutique"} className="hover:text-orange-500 ">
@@ -55,7 +56,7 @@ import Link from "next/link";
           </div>
 
           {/* Logo au centre */}
-          <Link href={"/"} className="shadow ">
+          <Link href={"/"}>
             <Image
               src={Logo}
               alt="FrancsBuveurs"
@@ -72,9 +73,7 @@ import Link from "next/link";
               LA BRASSERIE 
             </Link>
           </div>
-          
-          
-        </div> 
+        </div>
       </div>
       
       {/* Menu mobile */}

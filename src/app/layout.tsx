@@ -26,11 +26,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${Fredericka.variable} antialiased` }
+        className={`${Fredericka.variable} antialiased bg-white ` }
       >
         <CartProvider>
-        <NavBar />
         <CartIcon />
+        <NavBar />
         {children}
         </CartProvider>
       </body>

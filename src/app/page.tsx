@@ -2,10 +2,8 @@
 import HomepageCarroussel from "./components/HomepageCarroussel"
 import BeerCarousel from "./components/BeerCaroussel"
 import History from "./components/HistoryHomepage"
-import Link from "next/link"
 import NavigateCard from "./components/NavigateCard"
-
-
+import Link from "next/link"
 
 export default function Home() {
   return (
