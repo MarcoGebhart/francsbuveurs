@@ -45,15 +45,15 @@ export function BeerCard({ product }: BeerCardProps) {
 
     return (
         <div className="container mx-auto p-8 md:h-screen">
-            <div className="flex flex-col md:flex-row gap-8 text-black">
-                <div className="w-full md:w-1/2">
+            <div className="flex flex-col md:flex-row  gap-8 text-black">
+                <div className=" flex justify-end w-full md:w-1/2">
                     <Image
                         key={product.images.edges[0].node.id}
                         src={product.images.edges[0].node.url}
                         alt={product.images.edges[0].node.altText || product.title}
                         width={300}
                         height={300}
-                        className="w-full lg:w-1/2 object-cover rounded-lg"
+                        className="w-full lg:w-1/2 object-cover  rounded-lg"
                     />
                 </div>
                 <div className="w-full md:w-1/2">

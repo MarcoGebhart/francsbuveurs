@@ -5,9 +5,20 @@ import Image from "next/image";
 import Link from "next/link";
 import Basket from "../../../public/panier.png"
 import User from "../../../public/user.png"
+import { useEffect, useState } from "react";
 
 export const CartIcon = () => {
     const { totalItems } = useCart();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    },[]);
+
+    if(!mounted) {
+        // ne rien afficher tant que le client n'est pas monté
+        return null;
+    }
 
     return (
         <div className="flex justify-end gap-2 bg-white mr-4">
@@ -30,12 +41,13 @@ export const CartIcon = () => {
                             width={20}
                             height={15}
                         />
-                </Link>
+                
                     {totalItems > 0 && (
                         <span className="absolute -top-2 -right-2 bg-orange-500 text-xs  w-5 h-5 rounded-full flex items-center justify-center">
                             {totalItems}
                         </span>
-                    )} 
+                    )}
+                </Link> 
                 </div>   
                 
         </div>

@@ -1,9 +1,8 @@
-
+import Link from "next/link"
 import HomepageCarroussel from "./components/HomepageCarroussel"
-import BeerCarousel from "./components/BeerCaroussel"
+import NewBeerCarousel from "./components/NewBeerCaroussel"
 import History from "./components/HistoryHomepage"
 import NavigateCard from "./components/NavigateCard"
-import Link from "next/link"
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
       <HomepageCarroussel />
       <div className="flex flex-col items-center">
         <h2 className="text-2xl mt-6">Nos Bières Artisanales</h2>
-        <BeerCarousel />
+        <NewBeerCarousel />
         <Link href={"/boutique"}>
           <button className=" border border-orange-500 text-black bg-white rounded p-2 mt-6 hover:bg-orange-500 hover:text-white">LA BOUTIQUE</button>
         </Link>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavBar } from "./components/NavBar";
 import { CartProvider } from "@/context/CartContext";
 import { CartIcon } from "./components/CartIcon";
+import Footer from "./components/Footer";
 
 const Fredericka = Fredericka_the_Great({
   variable: "--font-fredericka",
@@ -26,12 +27,13 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${Fredericka.variable} antialiased bg-white ` }
+        className={`${Fredericka.variable} antialiased bg-white`}
       >
         <CartProvider>
         <CartIcon />
         <NavBar />
         {children}
+        <Footer/>
         </CartProvider>
       </body>
     </html>
