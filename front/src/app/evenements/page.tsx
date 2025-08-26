@@ -4,6 +4,7 @@ import IEvent from "@/@types/Event";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import EventsCard from "../components/EventsCard";
+import { API_URL } from "@/lib/config";
 
 
 export default function Events() {
@@ -14,7 +15,7 @@ export default function Events() {
     useEffect(() => {
         const fetchEvent = async() => {
             try {
-                const response = await axios.get('http://localhost:5000/events',
+                const response = await axios.get(`${API_URL}/events`,
                     {withCredentials: true}
                 );
                 console.log(response);
