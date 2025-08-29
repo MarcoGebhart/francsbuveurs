@@ -30,7 +30,7 @@ export default async function ShopPage() {
     
   // 4. On affiche les produits
   return (
-    <div>
+    <div className="text-black">
       <h1 className="text-center text-3xl m-10">La Boutique Des FrancsBuveurs</h1>
       <div className="flex flex-wrap justify-center gap-6 p-8 text-black">
         

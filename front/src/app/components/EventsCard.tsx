@@ -8,7 +8,7 @@ interface IEventProps {
 
 export default function EventsCard({ event }: IEventProps) {
     return (
-        <div className="w-full flex flex-col border md:flex-row md:h-[225px]">
+        <article className="w-3/4 text-black flex flex-col border md:flex-row md:h-[225px]">
             <Link href={`/evenements/${event.slug}`} className="md:w-3/4 h-full">
                 <figure className="w-full h-full">
                     <Image
@@ -20,13 +20,16 @@ export default function EventsCard({ event }: IEventProps) {
                     />
                 </figure>
             </Link>
-            <div className="md:w-1/2 flex flex-col gap-2 m-2 h-full">
-                <p className="text-orange-500">
+            <section className="md:w-1/2 flex flex-col gap-2 m-2 h-full">
+                <time 
+                    className="text-orange-500 text-xl"
+                    dateTime={event.date ? new Date(event.date).toISOString(): undefined}
+                >
                     {new Date(event.date).toLocaleDateString()} {event.hour.slice(0,5)}
-                </p>
-                <p className="text-2xl">{event.title}</p>
+                </time>
+                <h2 className="text-2xl">{event.title}</h2>
                 <p className="flex-grow">{event.description}</p>
-            </div>
-        </div>
+            </section>
+        </article>
     );
 }
