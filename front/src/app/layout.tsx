@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { CartProvider } from "@/context/CartContext";
 import { CartIcon } from "./components/CartIcon";
 import Footer from "./components/Footer";
+import { AuthProvider } from "@/context/AuthContext";
 
 const Fredericka = Fredericka_the_Great({
   variable: "--font-fredericka",
@@ -29,12 +30,14 @@ export default function RootLayout({
       <body
         className={`${Fredericka.variable} antialiased bg-white`}
       >
-        <CartProvider>
-        <CartIcon />
-        <NavBar />
-        {children}
-        <Footer/>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <CartIcon />
+            <NavBar />
+            {children}
+            <Footer/>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

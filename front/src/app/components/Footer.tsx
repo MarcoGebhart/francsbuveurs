@@ -5,17 +5,15 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <div className="text-black flex flex-col text-center flex-wrap m-auto gap-8 border-t p-4 md:flex-row md:justify-center">
-            
-            <Image
-                src={Logo}
-                alt="logo francsbuveurs"
-                width={200}
-                height={100}
-                className="self-center" 
-                    
-                >
-
-            </Image>
+            <Link href={"/connexion"} className="self-center cursor-default">
+                <Image
+                    src={Logo}
+                    alt="logo francsbuveurs"
+                    width={200}
+                    height={100}     
+                    >
+                </Image>
+            </Link>
             <div>
                 <h2 className="text-xl mb-2 text-orange-500">FrancsBuveurs</h2>
                 <p>3 chemin de Senlis</p>

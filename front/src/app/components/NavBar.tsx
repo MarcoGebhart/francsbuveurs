@@ -1,15 +1,25 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../public/logo.png"
-import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 
  export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const {user, logout} = useAuth();
+    const router = useRouter()
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+      };
+    
+    const handleLogout = async () => {
+        await logout();
+        setIsOpen(false);
+        router.push('/');
       };
     return (
         <nav className="bg-white text-black md:pb-4">
@@ -83,6 +93,12 @@ import Link from "next/link";
           <Link href={"/bar"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LE BAR</Link>
           <Link href={"/evenements"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LES EVENEMENTS</Link>
           <Link href={"/brasserie"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LA BRASSERIE</Link>
+          {user?.role === "admin" &&(
+            <div>
+              <Link href={"/admin"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">ADMIN</Link>
+              <button className="block hover:text-orange-500" onClick={handleLogout}>DECONNEXION</button>
+            </div>
+          )}
         </div>
       )}
     </nav>
