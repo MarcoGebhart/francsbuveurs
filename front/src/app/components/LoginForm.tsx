@@ -41,7 +41,7 @@ export default function LoginForm(){
                 );
                 console.log("Connexion réussie")
                 await fetchUser();
-                console.log(user?.role)
+                console.log(user)
                 router.push("/")
             } catch (error) {
                 const err = error as AxiosError

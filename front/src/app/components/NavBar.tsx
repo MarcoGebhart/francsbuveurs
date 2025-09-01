@@ -94,9 +94,9 @@ import { useRouter } from "next/navigation";
           <Link href={"/evenements"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LES EVENEMENTS</Link>
           <Link href={"/brasserie"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">LA BRASSERIE</Link>
           {user?.role === "admin" &&(
-            <div>
+            <div className="flex flex-col items-center gap-4">
               <Link href={"/admin"} onClick={() => setIsOpen(false)} className="block hover:text-orange-500">ADMIN</Link>
-              <button className="block hover:text-orange-500" onClick={handleLogout}>DECONNEXION</button>
+              <button className="block hover:text-orange-500 " onClick={handleLogout}>DECONNEXION</button>
             </div>
           )}
         </div>
