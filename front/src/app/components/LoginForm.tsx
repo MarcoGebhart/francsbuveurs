@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 
 
@@ -12,6 +13,7 @@ export default function LoginForm(){
     const router = useRouter();
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const {user, fetchUser} = useAuth();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -38,6 +40,8 @@ export default function LoginForm(){
                     {withCredentials: true}
                 );
                 console.log("Connexion réussie")
+                await fetchUser();
+                console.log(user?.role)
                 router.push("/")
             } catch (error) {
                 const err = error as AxiosError

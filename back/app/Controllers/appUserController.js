@@ -132,8 +132,8 @@ export async function loginAppUser(req, res) {
     const { password: _password,...userWithoutPassword } = user.toJSON();
     res.cookie("token", token, {
         httpOnly: true,       // inaccessible au JS
-        secure: process.env.NODE_ENV === "production",         // seulement en HTTPS (mettre false si test en local sans https)
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",   // empêche CSRF
+        secure: true, //process.env.NODE_ENV === "production",         // seulement en HTTPS (mettre false si test en local sans https)
+        sameSite: "none", //process.env.NODE_ENV === "production" ? "none" : "lax",   // empêche CSRF
         maxAge: 2 * 60 * 60 * 1000 // 2h
       });
     res.json({ message: "Connexion réussi", user: userWithoutPassword });
