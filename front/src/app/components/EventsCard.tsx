@@ -20,7 +20,7 @@ export default function EventsCard({ event }: IEventProps) {
                     />
                 </figure>
             </Link>
-            <section className="md:w-1/2 flex flex-col gap-2 m-2 h-full">
+            <section className="md:w-1/2 flex flex-col gap-2 m-2 h-full overflow-y-auto">
                 <time 
                     className="text-orange-500 text-xl"
                     dateTime={event.date ? new Date(event.date).toISOString(): undefined}

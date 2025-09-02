@@ -62,12 +62,12 @@ export default function LoginForm(){
     }
     return (
         <form onSubmit={handleSubmit}>
-            <div className="flex items-center flex-col border border-orange-500 rounded p-4 mt-10">
+            <div className=" text-black flex items-center flex-col border border-orange-500 rounded p-4 mt-10">
                 <fieldset className="fieldset w-full mb-6">
                     <legend className="fieldset text-black text-xl sm:text-2xl mb-2">Email</legend>
-                    <input type="text" name="email" className="input w-full" required/>
+                    <input type="text" name="email" className="input w-full bg-white border-orange-500" required/>
                     <legend className="fieldset text-black text-xl sm:text-2xl mt-a mb-2">Mot de passe</legend>
-                    <input type="password" name='password' className="input w-full" required/>
+                    <input type="password" name='password' className="input w-full  bg-white border-orange-500" required/>
                     <div className='text-end '>
                         <Link className='text-black underline text-sm sm:text-base' href="#">Mot de passe oublié ?</Link>
                     </div>
@@ -76,7 +76,7 @@ export default function LoginForm(){
                 {errorMessage && (
                     <p className='text-red-500 text-sm mb-4 text-center'>{errorMessage}</p>
                 )}
-                <button className="border border-orange-500 rounded-full hover:bg-orange-500 w-full text-lg sm:text-xl mb-4" type='submit' disabled={isLoading}>{isLoading ? "Connexion..." : "Me connecter"}</button>
+                <button className="text-black border border-orange-500 rounded-full hover:bg-orange-500 w-full text-lg sm:text-xl mb-4" type='submit' disabled={isLoading}>{isLoading ? "Connexion..." : "Me connecter"}</button>
                 
                             
             </div>
