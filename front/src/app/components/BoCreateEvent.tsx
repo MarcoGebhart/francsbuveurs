@@ -41,7 +41,7 @@ export default function EventCreate({onUpdate}: IEventCreateProps) {
             formData.append('slug', slug);
             formData.append('id_app_user', String(user?.id));
             if (imageFile) {
-                formData.append('img', imageFile); // 'image' doit correspondre au nom du champ dans Multer
+                formData.append('image', imageFile); // 'image' doit correspondre au nom du champ dans Multer
             }
 
             await axios.post(`${API_URL}/events`, formData, {
@@ -83,6 +83,7 @@ export default function EventCreate({onUpdate}: IEventCreateProps) {
                     <textarea className=" textarea text-center md:m-auto" placeholder='Description' value={description} onChange={(event) => setDescription(event.target.value)} />
                     <input
                         type="file" // Changement du type ici
+                        name="image"
                         className="input text-center md:w-40 md:h-[80] md:m-auto"
                         onChange={(event) => {
                             if (event.target.files) {
