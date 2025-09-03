@@ -20,7 +20,7 @@ export default function EventsCard({ event }: IEventProps) {
                     />
                 </figure>
             </Link>
-            <section className="md:w-1/2 flex flex-col gap-2 m-2 h-full overflow-y-auto">
+            <section className="md:w-1/2 flex flex-col gap-2 m-2  h-full overflow-y-auto">
                 <time 
                     className="text-orange-500 text-xl"
                     dateTime={event.date ? new Date(event.date).toISOString(): undefined}
@@ -28,7 +28,7 @@ export default function EventsCard({ event }: IEventProps) {
                     {new Date(event.date).toLocaleDateString()} {event.hour.slice(0,5)}
                 </time>
                 <h2 className="text-2xl">{event.title}</h2>
-                <p className="flex-grow">{event.description}</p>
+                <p className="max-h-[120px] overflow-y-auto">{event.description}</p>
             </section>
         </article>
     );

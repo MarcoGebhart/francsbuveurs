@@ -7,6 +7,7 @@ import { CartIcon } from "./components/CartIcon";
 import Footer from "./components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 
+
 const Fredericka = Fredericka_the_Great({
   variable: "--font-fredericka",
   subsets:["latin"],

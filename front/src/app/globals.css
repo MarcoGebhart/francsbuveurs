@@ -36,8 +36,11 @@
   --noise: 0;
 }
 
-body {
+html,body {
   font-family: var(--font-fredericka), serif;
+  margin: 0;
+  padding: 0;
+  
   
 }
 

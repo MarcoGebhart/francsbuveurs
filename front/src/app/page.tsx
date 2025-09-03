@@ -6,7 +6,7 @@ import NavigateCard from "./components/NavigateCard"
 
 export default function Home() {
   return (
-    <div className="bg-white text-black"> 
+    <div className=" text-black"> 
       <HomepageCarroussel />
       <div className="flex flex-col items-center">
         <h2 className="text-2xl mt-6">Nos Bières Artisanales</h2>

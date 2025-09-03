@@ -1,5 +1,5 @@
 import { Event } from "../models/associations.js";
-import { slugSchema, idSchema, updateEventSchema} from "../schemas/index.js";
+import { slugSchema, idSchema, updateEventSchema, eventSchema} from "../schemas/index.js";
 
 export const getAllEvents = async (req, res) => {
     try {
@@ -51,7 +51,16 @@ export const getOneBySlug = async (req, res) => {
 
 export const createdOneEvent = async (req, res) => {
     try {
-      const newEvent = await Event.create(req.body);
+      const validationResult = eventSchema.safeParse(req.body);
+      if(!validationResult.success) {
+        return res.status(400).json({ errors: validationResult.error.issues })
+      };
+      if(!req.file){
+        return res.status(400).json({ error: "L'image de l'événement est requise." });
+      }
+      const {title, description, date, hour, slug, id_app_user } = validationResult.data;
+      const img = req.file.filename;
+      const newEvent = await Event.create({title, description, date, hour, img, slug, id_app_user });
       res.status(201).json(newEvent);
     } catch (error) {
       console.error("Erreur création événement :", error);

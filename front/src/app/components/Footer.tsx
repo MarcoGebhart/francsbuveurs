@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="text-black flex flex-col text-center flex-wrap m-auto gap-8 border-t p-4 md:flex-row md:justify-center">
+        <div className="text-black bg-white flex flex-col text-center flex-wrap m-auto gap-8 border-t p-4 md:flex-row md:justify-center">
             <Link href={"/connexion"} className="self-center cursor-default">
                 <Image
                     src={Logo}
