@@ -14,6 +14,7 @@ app.use(cors({
   }));
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 app.post("/webhook/orders/create", async (req, res) => {
 	const order = req.body;
 	await handleOrderCreated(order);
