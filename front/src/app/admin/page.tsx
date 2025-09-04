@@ -35,12 +35,12 @@ export default function Admin() {
                 <div>
                   <EventCreate onUpdate={fetchEvent}/>  
                 </div>
-                <div>    
+                <div className="flex flex-col gap-4">    
                 {eventsData.map((event) => (
                     <EventAdmin
-                    key={event.id}       // ✅ clé unique pour React
-                    eventId={event.id}   // ✅ passe l'id de l'événement
-                    onUpdate={fetchEvent} // 🔄 callback pour rafraîchir la liste
+                    key={event.id}       
+                    eventId={event.id}   
+                    onUpdate={fetchEvent} 
                     />
                 ))}
                         

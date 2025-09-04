@@ -59,7 +59,7 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
         if (hour) formData.append("hour", hour);
         if (slug) formData.append("slug", slug);
         if (user?.id) formData.append("id_app_user", String(user.id));
-        if (imageFile) formData.append("img", imageFile);
+        if (imageFile) formData.append("image", imageFile);
 
         for (const pair of formData.entries()) {
             console.log(pair[0], pair[1]);
@@ -95,7 +95,7 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
 
   return (
     <div className="border p-4 rounded space-y-4">
-      <h2 className="text-lg font-bold">{title}</h2>
+      <h2 className="text-lg text-orange-500">{title}</h2>
 
       <input
         type="text"
@@ -135,8 +135,8 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
       />
       
       <div className="flex gap-2 mt-2">
-        <button className="btn btn-primary" onClick={handleUpdate}>Mettre à jour</button>
-        <button className="btn btn-error" onClick={handleDelete}>Supprimer</button>
+        <button className=" border border-orange-500 rounded p-2 hover:bg-orange-500" onClick={handleUpdate}>Mettre à jour</button>
+        <button className="border border-orange-500 rounded p-2 hover:bg-red-700 " onClick={handleDelete}>Supprimer</button>
       </div>
 
       {message && <p>{message}</p>}
