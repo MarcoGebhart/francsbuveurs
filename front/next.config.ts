@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'cdn.shopify.com',
         pathname: '/s/files/**',
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**", // accepte toutes les images Cloudinary
+      },
     ],
   },
 };

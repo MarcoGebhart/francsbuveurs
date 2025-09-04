@@ -1,9 +1,10 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EventCreate from "../components/BoCreateEvent";
 import IEvent from "@/@types/Event";
 import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/config";
+import EventAdmin from "../components/BoEventCard";
 
 export default function Admin() {
     const [eventsData, setEventsData] = useState<IEvent[]>([]);
@@ -15,9 +16,13 @@ export default function Admin() {
         } catch (error) {
             if (error instanceof AxiosError) {
                 console.log(error.message)
+            }
         }
     }
-    }
+    useEffect(() => {
+        fetchEvent();
+      }, []);
+    
     return (
         <div className="flex flex-col items-center  bg-white text-black m-10 gap-4">
             <h1 className="text-2xl self-center">BackOffice Admin</h1>
@@ -29,6 +34,16 @@ export default function Admin() {
                 </nav>
                 <div>
                   <EventCreate onUpdate={fetchEvent}/>  
+                </div>
+                <div>    
+                {eventsData.map((event) => (
+                    <EventAdmin
+                    key={event.id}       // ✅ clé unique pour React
+                    eventId={event.id}   // ✅ passe l'id de l'événement
+                    onUpdate={fetchEvent} // 🔄 callback pour rafraîchir la liste
+                    />
+                ))}
+                        
                 </div>
             </div>
         </div>

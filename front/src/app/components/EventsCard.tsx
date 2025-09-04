@@ -12,7 +12,7 @@ export default function EventsCard({ event }: IEventProps) {
             <Link href={`/evenements/${event.slug}`} className="md:w-3/4 h-full">
                 <figure className="w-full h-full">
                     <Image
-                        src={`/${event.img}.png`}
+                        src={event.img}
                         alt={event.title}
                         width={300}
                         height={100}

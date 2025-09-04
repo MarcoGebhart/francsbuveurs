@@ -72,6 +72,9 @@ export async function updateOneEventById(req, res) {
     try {
       const { id } = idSchema.parse(req.params);
       const data = updateEventSchema.parse(req.body);
+      if (req.file) {
+        data.img = req.file.path;
+      }
       const event = await Event.findByPk(id);
       if (!event) {
         return res.status(404).json({ message: "Evènemement non trouvée" });
