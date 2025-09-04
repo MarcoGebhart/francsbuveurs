@@ -31,7 +31,7 @@ export const CartIcon = () => {
       };
 
     return (
-        <div className="flex justify-end gap-4 bg-white mr-4">
+        <div className="flex justify-end gap-4 text-black bg-white mr-4">
             {user?.role === "admin" &&(
             <div className="hidden md:flex mt-4 mb-0 gap-4">
               <Link href={"/admin"} className="block hover:text-orange-500">ADMIN</Link>

@@ -53,7 +53,7 @@ export default function CartPage() {
       </ul>
 
       <div className="mt-4">
-        <p className=" bg-orange-300 text-end text-xl  pt-4 border-b pb-4">Total : {totalPrice?.amount} {totalPrice?.currencyCode}</p>
+        <p className=" bg-orange-300 text-end text-xl pt-4 border-b pb-4 pr-2">Total : {totalPrice?.amount} {totalPrice?.currencyCode}</p>
         <p className="mt-2">Montant minimun de commande : 30 €</p>
         <p>Taxes incluses. Frais de port calculés à l&apos;étape de paiement</p>
         
