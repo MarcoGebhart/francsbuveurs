@@ -59,7 +59,7 @@ export const createdOneEvent = async (req, res) => {
         return res.status(400).json({ error: "L'image de l'événement est requise." });
       }
       const {title, description, date, hour, slug, id_app_user } = validationResult.data;
-      const img = req.file.filename;
+      const img = req.file.path;
       const newEvent = await Event.create({title, description, date, hour, img, slug, id_app_user });
       res.status(201).json(newEvent);
     } catch (error) {

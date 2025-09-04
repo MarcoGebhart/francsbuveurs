@@ -1,6 +1,4 @@
 import { Router } from "express";
-import {validate} from "../middlewares/validate.js";
-import { eventSchema} from "../schemas/index.js";
 import * as eventController from "../Controllers/eventController.js";
 import { isAdmin, isLogged } from "../middlewares/isLogged.js";
 import upload from "../middlewares/uploadMiddleware.js";
