@@ -31,15 +31,15 @@ export const CartIcon = () => {
       };
 
     return (
-        <div className=" flex justify-end gap-4 text-black bg-white pr-4">
+        <div className="flex justify-end items-center gap-4 text-black bg-white pr-4">
             {user?.role === "admin" &&(
-            <div className="hidden md:flex mt-4 mb-0 gap-4">
+            <div className="hidden md:flex p-2 gap-4">
               <Link href={"/admin"} className="block hover:text-orange-500">ADMIN</Link>
               <Image
                 src={Logout}
                 alt="se déconnecter"
                 width={15}
-                height={15}
+                height={10}
                 onClick={handleLogout}></Image>
               
             </div>
@@ -50,12 +50,12 @@ export const CartIcon = () => {
                     alt= "bouton mon compte"
                     width={15}
                     height={10}
-                    className="mt-4 mb-0"
+                    className=""
                      >    
                 </Image>
             </Link>
             
-                <div className="mt-4 flex justify-end relative">
+                <div className="p-2 flex justify-end relative">
                 <Link href={"/mon-panier"}>  
                     <Image
                             src={Basket}

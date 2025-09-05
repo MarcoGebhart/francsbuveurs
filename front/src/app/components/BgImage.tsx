@@ -1,4 +1,4 @@
-// BackgroundImage.jsx
+
 import BgImage from "../../../public/BImage2.png"
 
 import { ReactNode } from "react";
@@ -15,7 +15,6 @@ import { ReactNode } from "react";
       >
         {/* Overlay pour fondu */}
         <div className="absolute inset-0 bg-white opacity-5"></div>
-  
         {/* Contenu */}
         <div className="relative z-10">{children}</div>
       </div>
