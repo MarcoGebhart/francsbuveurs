@@ -1,7 +1,7 @@
 [build]
   base = "front"
   command = "npm run build"
-  publish = "front/.next"
+  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
