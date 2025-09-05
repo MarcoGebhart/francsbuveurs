@@ -1,12 +1,12 @@
 import Image from "next/image"
 import Event from "../../../public/biereenrang.jpg"
 import Bar from "../../../public/tireuse2.jpg"
-import Shop from "../../../public/ecommerce3.jpg"
+import Shop from "../../../public/e-commerce.png"
 import Link from "next/link"
 
 export default function NavigateCard() {
     return (
-        <div className="flex flex-col md:flex-row items-stretch justify-evenly m-8 gap-6">
+        <div className="flex flex-col md:flex-row items-stretch justify-evenly p-8 gap-6">
             {/* Carte Événements */}
             <div className="flex flex-col items-center justify-between w-full md:w-1/3 overflow-hidden">
                 <h2 className="text-center p-4">LES ÉVÉNEMENTS</h2>

@@ -45,7 +45,7 @@ export default function Events() {
         )
     }
     return(
-        <div className="text-black flex flex-col items-center gap-8 m-8">
+        <div className="text-black flex flex-col items-center gap-8 p-8">
             <h1 className="text-2xl">LES ÉVÉNEMENTS</h1>
             <div className="flex flex-col items-center gap-8">
                 {eventsData.map((event) => (

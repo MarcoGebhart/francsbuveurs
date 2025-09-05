@@ -31,14 +31,14 @@ export const CartIcon = () => {
       };
 
     return (
-        <div className="flex justify-end gap-4 text-black bg-white mr-4">
+        <div className=" flex justify-end gap-4 text-black bg-white pr-4">
             {user?.role === "admin" &&(
             <div className="hidden md:flex mt-4 mb-0 gap-4">
               <Link href={"/admin"} className="block hover:text-orange-500">ADMIN</Link>
               <Image
                 src={Logout}
                 alt="se déconnecter"
-                width={20}
+                width={15}
                 height={15}
                 onClick={handleLogout}></Image>
               
@@ -48,8 +48,8 @@ export const CartIcon = () => {
                 <Image 
                     src={User}
                     alt= "bouton mon compte"
-                    width={20}
-                    height={15}
+                    width={15}
+                    height={10}
                     className="mt-4 mb-0"
                      >    
                 </Image>
@@ -60,7 +60,7 @@ export const CartIcon = () => {
                     <Image
                             src={Basket}
                             alt="Panier de bière"
-                            width={20}
+                            width={15}
                             height={15}
                         />
                 

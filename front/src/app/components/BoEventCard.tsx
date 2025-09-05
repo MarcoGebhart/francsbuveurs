@@ -27,7 +27,6 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string>("");
   const [message, setMessage] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -44,7 +43,6 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
         setDescription(event.description);
         setDate(formatDateForInput(event.date));
         setHour(event.hour);
-        setImagePreview(event.img || ""); // Utilise le champ img
       })
       .catch(err => console.error(err));
   }, [eventId]);
@@ -99,37 +97,36 @@ export default function EventAdmin({ eventId, onUpdate }: IEventAdminProps) {
 
       <input
         type="text"
-        className="input w-full"
+        className="input w-full bg-white"
         value={title}
         onChange={e => setTitle(e.target.value)}
         placeholder="Titre"
       />
       <textarea
-        className="textarea w-full"
+        className="textarea w-full bg-white"
         value={description}
         onChange={e => setDescription(e.target.value)}
         placeholder="Description"
       />
       <input
         type="date"
-        className="input"
+        className="input bg-white"
         value={date}
         onChange={e => setDate(e.target.value)}
       />
       <input
         type="time"
-        className="input"
+        className="input bg-white"
         value={hour}
         onChange={e => setHour(e.target.value)}
       />
       <input
         type="file"
         ref={fileInputRef}
-        className="input"
+        className="input bg-white"
         onChange={e => {
           if (e.target.files) {
             setImageFile(e.target.files[0]);
-            setImagePreview(URL.createObjectURL(e.target.files[0]));
           }
         }}
       />

@@ -6,6 +6,7 @@ import { CartProvider } from "@/context/CartContext";
 import { CartIcon } from "./components/CartIcon";
 import Footer from "./components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import BackgroundImage from "./components/BgImage";
 
 
 const Fredericka = Fredericka_the_Great({
@@ -29,13 +30,15 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${Fredericka.variable} antialiased bg-white`}
+        className={`${Fredericka.variable} antialiased `}
       >
         <AuthProvider>
           <CartProvider>
             <CartIcon />
             <NavBar />
-            {children}
+            <BackgroundImage>
+              {children}
+            </BackgroundImage>
             <Footer/>
           </CartProvider>
         </AuthProvider>

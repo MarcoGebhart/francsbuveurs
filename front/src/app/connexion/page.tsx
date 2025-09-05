@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 
 export default function loginAdmin(){
     return (
-        <div className=" text-black flex flex-col items-center m-10">
+        <div className=" text-black flex flex-col items-center p-8">
             <h1 className=" text-2xl">CONNEXION ADMIN</h1>
             <LoginForm />
             <Link href={"https://www.shopify.com/fr/store-login"}>

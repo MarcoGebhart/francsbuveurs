@@ -13,7 +13,7 @@ export default function CartPage() {
   
 
   return (
-    <div className=" flex flex-col text-black items-center rounded-2xl m-10  md:w-1/2 md:m-auto">
+    <div className=" flex flex-col text-black items-center rounded-2xl p-8  md:w-1/2 md:m-auto">
       <h1 className="text-4xl m-10">Mon Panier</h1>
       <ul className="flex flex-col gap-2 w-full">
         {cartItems.map((item) => (

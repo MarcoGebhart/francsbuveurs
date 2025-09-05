@@ -26,7 +26,7 @@ export default function ProductCard({ product }: IProduct) {
 
   return (
     
-    <div className="  p-4 text-center rounded-lg shadow-md">
+    <div className=" bg-white p-4 text-center rounded-lg shadow-md">
       <Link href={`/boutique/${product.handle}`}>
         <Image
           src={product.images[0]?.url}

@@ -45,7 +45,7 @@ export function BeerCard({ product }: BeerCardProps) {
 
     return (
         <div className="container mx-auto p-8 md:h-screen">
-            <div className="flex flex-col md:flex-row  gap-8 text-black">
+            <div className="flex flex-col md:flex-row text-black">
                 <div className=" flex justify-end w-full md:w-1/2">
                     <Image
                         key={product.images.edges[0].node.id}
@@ -56,7 +56,7 @@ export function BeerCard({ product }: BeerCardProps) {
                         className="w-full lg:w-1/2 object-cover  rounded-lg"
                     />
                 </div>
-                <div className="w-full md:w-1/2">
+                <div className="w-full md:w-1/2 bg-white p-2 rounded-xl">
                     <h1 className="text-3xl mb-4">{product.title}</h1>
                     <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} className=" mb-4" />
                     <p className="text-2xl mb-2">
