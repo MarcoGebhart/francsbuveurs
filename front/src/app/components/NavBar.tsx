@@ -53,7 +53,7 @@ import { useRouter } from "next/navigation";
             </div>
         </div>
         {/* Desktop & tablette */}
-        <div className="hidden md:flex items-center h-20 justify-center gap-15">
+        <div className="hidden md:flex items-center justify-center gap-10 md:ml-4 lg:ml-16">
           
           {/* Liens gauche */}
           <div className="md:flex md:flex-col gap-4 lg:flex-row lg:gap-15">

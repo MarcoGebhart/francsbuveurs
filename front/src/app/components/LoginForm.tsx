@@ -62,7 +62,7 @@ export default function LoginForm(){
     }
     return (
         <form onSubmit={handleSubmit}>
-            <div className=" text-black flex items-center flex-col border border-orange-500 rounded p-4 mt-10">
+            <div className=" text-black flex items-center flex-col border border-orange-500 rounded p-10 mt-10">
                 <fieldset className="fieldset w-full mb-6">
                     <legend className="fieldset text-black text-xl sm:text-2xl mb-2">Email</legend>
                     <input type="text" name="email" className="input w-full bg-white border-orange-500" required/>
