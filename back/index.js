@@ -9,7 +9,7 @@ import { handleOrderCreated } from "./webhooks/order.js";
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors({
-	origin:["http://localhost:3000", "http://192.168.1.186:3000", "https://francsbuveurs.netlify.app/"], // ou ton domaine en prod
+	origin:["http://localhost:3000", "http://192.168.1.186:3000", "https://francsbuveurs.netlify.app"], // ou ton domaine en prod
 	credentials: true // autorise l'envoi de cookies
   }));
 

@@ -133,7 +133,7 @@ export async function loginAppUser(req, res) {
     res.cookie("token", token, {
         httpOnly: true,       // inaccessible au JS
         secure: true, //process.env.NODE_ENV === "production",         // seulement en HTTPS (mettre false si test en local sans https)
-        sameSite: "lax", //process.env.NODE_ENV === "production" ? "none" : "lax",   // empêche CSRF
+        sameSite: "none", //process.env.NODE_ENV === "production" ? "none" : "lax",   // empêche CSRF
         maxAge: 2 * 60 * 60 * 1000 // 2h
       });
     res.json({ message: "Connexion réussi", user: userWithoutPassword });
