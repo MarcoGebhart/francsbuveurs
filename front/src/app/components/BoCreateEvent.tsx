@@ -20,10 +20,13 @@ interface IEventCreateProps {
 
 export default function EventCreate({onUpdate}: IEventCreateProps) {
     const {user} = useAuth();
+    const today = new Date();
+    const currentDate = today.toISOString().split("T")[0];
+    const currentTime = today.toTimeString().slice(0, 5);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
-    const [hour, setHour] = useState("");
+    const [date, setDate] = useState(currentDate);
+    const [hour, setHour] = useState(currentTime);
     const [imageFile, setImageFile] = useState<File | null>(null); // État pour le fichier image
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessMessage, setIsSuccessMessage] = useState(true);
@@ -94,8 +97,7 @@ export default function EventCreate({onUpdate}: IEventCreateProps) {
                     />
                     <input
                         type="date"
-                        className="input text-center md:w-40 md:m-auto bg-white"
-                        
+                        className="input text-black text-center md:w-40 md:m-auto bg-white"
                         value={date}
                         onChange={(event) => {setDate(event.target.value)}}
                     />
